@@ -16,5 +16,12 @@ namespace messageboardBackend.Controllers
                 new Message { Owner = "Tim" , Text ="Hi"}
             };
         }
+
+        // POST api/values
+        [HttpPost]
+        public void Post([FromBody] Message message)
+        {
+        }
+
     }
 }

@@ -25,6 +25,14 @@ namespace messageboardBackend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(x => x.AddPolicy("Cors", b=>
+            {
+                b
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -41,6 +49,7 @@ namespace messageboardBackend
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("Cors");
             app.UseMvc();
         }
     }
